@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace TimedMathQuiz
 {
@@ -91,6 +92,7 @@ namespace TimedMathQuiz
             }
         }
 
+
         private void startButton_Click(object sender, EventArgs e)
         {
             StartTheQuiz();
@@ -110,6 +112,10 @@ namespace TimedMathQuiz
             {
                 timeleft -= 1;
                 timeLabel.Text = timeleft + " Seconds";
+                if(timeleft < 6)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
             }
             else
             {
@@ -121,6 +127,7 @@ namespace TimedMathQuiz
                 quotient.Value = dividend / divisor;
                 MessageBox.Show("You didn't finish in time!", "Sorry!");
                 startButton.Enabled = true;
+                timeLabel.BackColor = Color.Empty;
             }
         }
 
@@ -132,6 +139,58 @@ namespace TimedMathQuiz
             {
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
+        private void playSound()
+        {
+            SystemSounds.Exclamation.Play();
+        }
+
+        private void sumValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+            if(answerBox != null)
+            {
+
+                if (addend1 + addend2 == answerBox.Value)
+                    playSound();
+            }
+        }
+
+        private void differenceValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+            if (answerBox != null)
+            {
+
+                if (minuend - subtrahend == answerBox.Value)
+                    playSound();
+
+            }
+        }
+
+        private void productValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+            if (answerBox != null)
+            {
+
+                if (multiplicand * factor == answerBox.Value)
+                    playSound();
+
+            }
+        }
+
+        private void quotientValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+            if (answerBox != null)
+            {
+
+                if (dividend / divisor == answerBox.Value)
+                    playSound();
+
             }
         }
     }
