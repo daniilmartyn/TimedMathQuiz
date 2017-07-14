@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.timeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.plusLeftLabel = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             this.dividedLabelRight = new System.Windows.Forms.Label();
             this.dividedLabelLeft = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.sum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.difference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.product)).BeginInit();
@@ -124,6 +126,7 @@
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(100, 35);
             this.sum.TabIndex = 2;
+            this.sum.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // difference
             // 
@@ -132,6 +135,7 @@
             this.difference.Name = "difference";
             this.difference.Size = new System.Drawing.Size(100, 35);
             this.difference.TabIndex = 3;
+            this.difference.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label2
             // 
@@ -152,7 +156,6 @@
             this.minus.TabIndex = 9;
             this.minus.Text = "-";
             this.minus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.minus.Click += new System.EventHandler(this.label5_Click);
             // 
             // minusLabelRight
             // 
@@ -181,6 +184,7 @@
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(100, 35);
             this.product.TabIndex = 4;
+            this.product.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label8
             // 
@@ -229,6 +233,7 @@
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(100, 35);
             this.quotient.TabIndex = 5;
+            this.quotient.Enter += new System.EventHandler(this.answer_Enter);
             // 
             // label12
             // 
@@ -280,6 +285,12 @@
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start the Quiz!";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -347,6 +358,7 @@
         private System.Windows.Forms.Label dividedLabelRight;
         private System.Windows.Forms.Label dividedLabelLeft;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
